@@ -50,7 +50,6 @@ namespace TFT_Overlay
 
                 t.Start();
             }
-            Console.WriteLine(1123123);
 
             System.Timers.Timer tTop = new System.Timers.Timer(200);//实例化Timer类，设置间隔时间为200毫秒；   
             tTop.Elapsed += new System.Timers.ElapsedEventHandler(theout);  //到达时间的时候执行事件； 
