@@ -7,8 +7,10 @@ using System.Windows.Input;
 using TFT_Overlay.Properties;
 using TFT_Overlay.Utilities;
 
+
 namespace TFT_Overlay
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -48,7 +50,27 @@ namespace TFT_Overlay
 
                 t.Start();
             }
+            Console.WriteLine(1123123);
+
+            System.Timers.Timer tTop = new System.Timers.Timer(200);//实例化Timer类，设置间隔时间为200毫秒；   
+            tTop.Elapsed += new System.Timers.ElapsedEventHandler(theout);  //到达时间的时候执行事件； 
+            tTop.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；    
+            tTop.Enabled = true;  //是否执行System.Timers.Timer.Elapsed事件；  ,调用start()方法也可以将其设置为true 
         }
+
+
+        public void theout(object source, System.Timers.ElapsedEventArgs e)
+        {
+            this.Dispatcher.Invoke(
+                new Action(
+                    delegate
+                    {
+                        this.Topmost = OnTop;
+                    }
+                )
+            );
+        }
+
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -91,6 +113,7 @@ namespace TFT_Overlay
             System.Windows.Forms.Application.Restart();
             Application.Current.Shutdown();
         }
+
 
         private void MenuItem_Click_OnTop(object sender, RoutedEventArgs e)
         {
@@ -163,6 +186,8 @@ namespace TFT_Overlay
                 Thread.Sleep(500);
             }
         }
+
+        
 
         private bool IsLeagueOrOverlayActive()
         {
