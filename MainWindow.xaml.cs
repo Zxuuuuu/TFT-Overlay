@@ -47,7 +47,7 @@ namespace TFT_Overlay
             InitializeComponent();
             this.WindowState = System.Windows.WindowState.Normal;
             this.ShowInTaskbar = false;
-            this.Topmost = true;
+            this.Topmost = OnTop;
             myHandle = new System.Windows.Interop.WindowInteropHelper(this).Handle;
 
             LoadStringResource(Settings.Default.Language);
@@ -64,7 +64,7 @@ namespace TFT_Overlay
                 t.Start();
             }
 
-            tTop = new System.Timers.Timer(1000);//set Timer  
+            tTop = new System.Timers.Timer(15000);//set Timer  
             tTop.Elapsed += new System.Timers.ElapsedEventHandler(theout);
             tTop.AutoReset = true;   
             tTop.Enabled = true;
@@ -74,27 +74,29 @@ namespace TFT_Overlay
 
         public void theout(object source, System.Timers.ElapsedEventArgs e)
         {
-            if (myHandle != GetForegroundWindow()) //let the win always on focus
+            if (OnTop)
             {
-                SetForegroundWindow(myHandle);
-            }
-            try
-            {
-                this.Dispatcher.Invoke(
-                    new Action(
-                        delegate
-                        {
-                            Console.WriteLine(123);
-                            this.Topmost = false;
-                            this.Topmost = true;
-                        
-                        }
-                    )
-                );
-            }
-            catch (System.Threading.Tasks.TaskCanceledException errMsg)
-            {
-                tTop.Stop();
+                if (myHandle != GetForegroundWindow()) //let the win always on focus
+                {
+                    SetForegroundWindow(myHandle);
+                }
+                try
+                {
+                    this.Dispatcher.Invoke(
+                        new Action(
+                            delegate
+                            {
+                                this.Topmost = false;
+                                this.Topmost = true;
+
+                            }
+                        )
+                    );
+                }
+                catch (System.Threading.Tasks.TaskCanceledException errMsg)
+                {
+                    tTop.Stop();
+                }
             }
         }
 
