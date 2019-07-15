@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,18 +11,25 @@ using TFT_Overlay.Utilities;
 
 namespace TFT_Overlay
 {
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto, ExactSpelling = true)]
+        public static extern IntPtr GetForegroundWindow();
+        [System.Runtime.InteropServices.DllImport("user32.dll", EntryPoint = "SetForegroundWindow")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+        public IntPtr myHandle;
+
         private readonly Cursor LoLNormal = CustomCursor.FromByteArray(Properties.Resources.LoLNormal);
         private readonly Cursor LoLPointer = CustomCursor.FromByteArray(Properties.Resources.LoLPointer);
         private readonly Cursor LoLHover = CustomCursor.FromByteArray(Properties.Resources.LoLHover);
 
         private string CurrentVersion { get; } = Utilities.Version.version;
         private bool OnTop { get; set; } = true;
+
+        private System.Timers.Timer tTop;
 
         private bool canDrag;
         public bool CanDrag
@@ -37,6 +45,11 @@ namespace TFT_Overlay
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowState = System.Windows.WindowState.Normal;
+            this.ShowInTaskbar = false;
+            this.Topmost = true;
+            myHandle = new System.Windows.Interop.WindowInteropHelper(this).Handle;
+
             LoadStringResource(Settings.Default.Language);
             this.Cursor = LoLNormal;
             CanDrag = !Settings.Default.Lock;
@@ -51,28 +64,44 @@ namespace TFT_Overlay
                 t.Start();
             }
 
-            System.Timers.Timer tTop = new System.Timers.Timer(200);//实例化Timer类，设置间隔时间为200毫秒；   
-            tTop.Elapsed += new System.Timers.ElapsedEventHandler(theout);  //到达时间的时候执行事件； 
-            tTop.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；    
-            tTop.Enabled = true;  //是否执行System.Timers.Timer.Elapsed事件；  ,调用start()方法也可以将其设置为true 
+            tTop = new System.Timers.Timer(1000);//set Timer  
+            tTop.Elapsed += new System.Timers.ElapsedEventHandler(theout);
+            tTop.AutoReset = true;   
+            tTop.Enabled = true;
         }
 
+        
 
         public void theout(object source, System.Timers.ElapsedEventArgs e)
         {
-            this.Dispatcher.Invoke(
-                new Action(
-                    delegate
-                    {
-                        this.Topmost = OnTop;
-                    }
-                )
-            );
+            if (myHandle != GetForegroundWindow()) //let the win always on focus
+            {
+                SetForegroundWindow(myHandle);
+            }
+            try
+            {
+                this.Dispatcher.Invoke(
+                    new Action(
+                        delegate
+                        {
+                            Console.WriteLine(123);
+                            this.Topmost = false;
+                            this.Topmost = true;
+                        
+                        }
+                    )
+                );
+            }
+            catch (System.Threading.Tasks.TaskCanceledException errMsg)
+            {
+                tTop.Stop();
+            }
         }
 
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            tTop.Stop();
             Settings.Default.Save();
         }
 
@@ -83,7 +112,7 @@ namespace TFT_Overlay
 
         private void MenuItem_Click_About(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("TFT Information Overlay V" + CurrentVersion + " by J2GKaze/Jinsoku#4019\n\nDM me on Discord if you have any questions\n\nLast Updated: July 10th, 2019 @ 7:45PM PST", "About");
+            MessageBox.Show("TFT Information Overlay V" + CurrentVersion + " by J2GKaze/Jinsoku#4019\n汉化定制 by izoyo（悠扬）\n\nDM me on Discord if you have any questions\n\nLast Updated: July 10th, 2019 @ 7:45PM PST", "About");
         }
 
         private void MenuItem_Click_Credits(object sender, RoutedEventArgs e)
@@ -100,7 +129,7 @@ namespace TFT_Overlay
         {
             string state = Settings.Default.AutoUpdate == true ? "OFF" : "ON";
 
-            MessageBoxResult result = MessageBox.Show($"Would you like to turn {state} Auto-Update? This will restart the program.", "Auto-Updater", MessageBoxButton.OKCancel);
+            MessageBoxResult result = MessageBox.Show($"你需要 { (state.Equals("ON") ? "开启":"关闭") } 自动更新吗？ 这么做需要重启程序。", "自动更新", MessageBoxButton.OKCancel);
 
             if (result != MessageBoxResult.OK)
             {
@@ -156,7 +185,7 @@ namespace TFT_Overlay
         {
             string state = Settings.Default.AutoDim == true ? "OFF" : "ON";
 
-            MessageBoxResult result = MessageBox.Show($"Would you like to turn {state} Auto-Dim? This will restart the program.", "Auto-Dim", MessageBoxButton.OKCancel);
+            MessageBoxResult result = MessageBox.Show($"你需要 { (state.Equals("ON") ? "开启" : "关闭") } 自动隐藏吗？ 这么做需要重启程序。", "自动隐藏", MessageBoxButton.OKCancel);
 
             if (result != MessageBoxResult.OK)
             {
@@ -264,7 +293,7 @@ namespace TFT_Overlay
 
         private void OpenChangelog_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/Just2good/TFT-Overlay/blob/master/README.md#version-history");
+            System.Diagnostics.Process.Start("https://github.com/izoyo/TFT-Overlay/releases");
         }
 
         private void LocalizationHelp_Click(object sender, RoutedEventArgs e)
