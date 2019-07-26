@@ -11,16 +11,19 @@ namespace TFT_Overlay
     {
         private void AutoUpdater(object sender, StartupEventArgs e)
         {
-            string currentVersion = Utilities.Version.version;
-            string version;
+            string currentVersion = Version.version;
 
             using (WebClient client = new WebClient())
             {
                 try
                 {
+<<<<<<< HEAD
                     string htmlCode = client.DownloadString("https://raw.githubusercontent.com/izoyo/TFT-Overlay/zh-CN/Utilities/Version.cs");
+=======
+                    string htmlCode = client.DownloadString("https://raw.githubusercontent.com/izoyo/TFT-Overlay/zh-CN/Version.cs");
+>>>>>>> 2.0.2
                     int versionFind = htmlCode.IndexOf("public static string version = ");
-                    version = htmlCode.Substring(versionFind + 32, 5);
+                    string version = htmlCode.Substring(versionFind + 32, 5);
                     if (currentVersion != version && Settings.Default.AutoUpdate)
                     {
                         var result = MessageBox.Show($"现在已经发布新的版本啦~\n你需要下载 V{version} 吗？", "TFT Overlay Update Available", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -48,7 +51,11 @@ namespace TFT_Overlay
                 catch (WebException ex)
                 {
                     Console.WriteLine(ex);
+<<<<<<< HEAD
                     MessageBox.Show(ex.ToString(), "报错啦！", MessageBoxButton.OK, MessageBoxImage.Error);
+=======
+                    MessageBox.Show(ex.ToString(), "报错啦!", MessageBoxButton.OK, MessageBoxImage.Error);
+>>>>>>> 2.0.2
                 }
             }
         }

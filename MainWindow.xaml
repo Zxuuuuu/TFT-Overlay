@@ -45,6 +45,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="850"/>
                             </Grid.RowDefinitions>
+<<<<<<< HEAD
                             <Rectangle Width="60" Fill="DarkOrange" Height="10" ToolTip="右键这里设置 或 拖拽移动" HorizontalAlignment="Left" Margin="75 0 0 0">
                                 <Rectangle.ContextMenu>
                                     <ContextMenu Cursor="{DynamicResource LoLHover}">
@@ -52,6 +53,15 @@
                                             <MenuItem x:Name="Lock" Header="锁定位置" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=Lock}" Click="MenuItem_Click_Lock" Foreground="Black"/>
                                             <MenuItem x:Name="ResizeLock" Header="可调大小" IsChecked="False" IsCheckable="True" Foreground="Black"/>
                                             <MenuItem x:Name="IconOpacity" Header="透明度" Foreground="Black">
+=======
+                            <Rectangle Width="60" Fill="DarkOrange" Height="10" ToolTip="{DynamicResource MainWindow_ToolTip_Options}" HorizontalAlignment="Left" Margin="75 0 0 0">
+                                <Rectangle.ContextMenu>
+                                    <ContextMenu Cursor="{DynamicResource LoLHover}">
+                                        <MenuItem Header="{DynamicResource MainWindow_Options_Preferences}">
+                                            <MenuItem x:Name="Lock" Header="{DynamicResource MainWindow_Options_Preferences_Lock}" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=Lock}" Click="MenuItem_Click_Lock" Foreground="Black"/>
+                                            <MenuItem x:Name="ResizeLock" Header="{DynamicResource MainWindow_Options_Preferences_Resize}" IsChecked="False" IsCheckable="True" Foreground="Black"/>
+                                            <MenuItem x:Name="IconOpacity" Header="{DynamicResource MainWindow_Options_Preferences_IconOpacity}" Foreground="Black">
+>>>>>>> 2.0.2
                                                 <MenuItem Header="5%" Click="IconOpacityHandler_Click"></MenuItem>
                                                 <MenuItem Header="10%" Click="IconOpacityHandler_Click"></MenuItem>
                                                 <MenuItem Header="15%" Click="IconOpacityHandler_Click"></MenuItem>
@@ -61,10 +71,17 @@
                                                 <MenuItem Header="75%" Click="IconOpacityHandler_Click"></MenuItem>
                                                 <MenuItem Header="100%" Click="IconOpacityHandler_Click"></MenuItem>
                                             </MenuItem>
+<<<<<<< HEAD
                                             <MenuItem x:Name="OnTop" Header="总在最上面" IsChecked="True" IsCheckable="True" Click="MenuItem_Click_OnTop" Foreground="Black"/>
                                         </MenuItem>
                                         <Separator Width="Auto" Height="2"/>
                                         <MenuItem x:Name="Localization" Header="语言" Foreground="Black">
+=======
+                                            <MenuItem x:Name="OnTop" Header="{DynamicResource MainWindow_Options_Preferences_AlwaysOnTop}" IsChecked="True" IsCheckable="True" Click="MenuItem_Click_OnTop" Foreground="Black"/>
+                                        </MenuItem>
+                                        <Separator Width="Auto" Height="2"/>
+                                        <MenuItem x:Name="Localization" Header="{DynamicResource MainWindow_Options_Language}" Foreground="Black">
+>>>>>>> 2.0.2
                                             <MenuItem Header="English">
                                                 <MenuItem Header="en-US" Click="Localization_Handler"/>
                                             </MenuItem>
@@ -77,6 +94,9 @@
                                             </MenuItem>
                                             <MenuItem Header="Français">
                                                 <MenuItem Header="fr-FR" Click="Localization_Handler"/>
+                                            </MenuItem>
+                                            <MenuItem Header="Magyar">
+                                                <MenuItem Header="HU" Click="Localization_Handler"/>
                                             </MenuItem>
                                             <MenuItem Header="Italiano">
                                                 <MenuItem Header="it-IT" Click="Localization_Handler"/>
@@ -96,6 +116,9 @@
                                             <MenuItem Header="Pусский">
                                                 <MenuItem Header="RU" Click="Localization_Handler"/>
                                             </MenuItem>
+                                            <MenuItem Header="Slovenščina">
+                                                <MenuItem Header="SL" Click="Localization_Handler"/>
+                                            </MenuItem>
                                             <MenuItem Header="Tiếng Việt">
                                                 <MenuItem Header="vi-VN" Click="Localization_Handler"/>
                                             </MenuItem>
@@ -104,6 +127,7 @@
                                                 <MenuItem Header="zh-TW" Click="Localization_Handler"/>
                                             </MenuItem>
                                             <Separator Width="Auto" Height="2"/>
+<<<<<<< HEAD
                                             <MenuItem Header="译者" Click="Localization_Credits"/>
                                         </MenuItem>
                                         <Separator Width="Auto" Height="2"/>
@@ -123,11 +147,36 @@
                                 </Rectangle.ContextMenu>
                             </Rectangle>
                             <Slider Name="OpacitySlider" Margin="8 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Minimum="0.01" Maximum="1" Orientation="Horizontal" Value="{Binding Source={x:Static p:Settings.Default}, Path=Opacity, Mode=TwoWay}" Style="{DynamicResource Custom_Slider}" ToolTip="透明度"></Slider>
+=======
+                                            <MenuItem Header="{DynamicResource MainWindow_Options_Language_Credits}" Click="Localization_Credits"/>
+                                        </MenuItem>
+                                        <Separator Width="Auto" Height="2"/>
+                                        <MenuItem Header="{DynamicResource MainWindow_Options_Help}">
+                                            <MenuItem Header="{DynamicResource MainWindow_Options_Help_About}" Click="MenuItem_Click_About" Foreground="Black"/>
+                                            <MenuItem Header="{DynamicResource MainWindow_Options_Help_Credits}" Click="MenuItem_Click_Credits" Foreground="Black"/>
+                                            <MenuItem Header="{DynamicResource MainWindow_Options_Help_Changelog}" Click="OpenChangelog_Click"/>
+                                            <MenuItem Header="{DynamicResource MainWindow_Options_Help_Localization}" Click="LocalizationHelp_Click"/>
+                                        </MenuItem>
+                                        <Separator Width="Auto" Height="2"/>
+                                        <MenuItem x:Name="AutoDim" Header="{DynamicResource MainWindow_Options_AutoDim}" Click="AutoDim_Click" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=AutoDim}" Foreground="Black"/>
+                                        <MenuItem x:Name="AutoUpdate" Header="{DynamicResource MainWindow_Options_AutoUpdate}" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=AutoUpdate}" Click="MenuItem_AutoUpdate" Foreground="Black"/>
+                                        <MenuItem x:Name="ResetToDefault" Header="{DynamicResource MainWindow_Options_ResetToDefault}" Click="ResetToDefault_Click" Foreground="Black"/>
+                                        <Separator Width="Auto" Height="2"/>
+                                        <MenuItem Header="{DynamicResource MainWindow_Options_Exit}" Click="MenuItem_Click" Foreground="Black"/>
+                                    </ContextMenu>
+                                </Rectangle.ContextMenu>
+                            </Rectangle>
+                            <Slider Name="OpacitySlider" Margin="8 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Minimum="0.01" Maximum="1" Orientation="Horizontal" Value="{Binding Source={x:Static p:Settings.Default}, Path=Opacity, Mode=TwoWay}" Style="{DynamicResource Custom_Slider}" ToolTip="{DynamicResource MainWindow_ToolTip_Opacity}"></Slider>
+>>>>>>> 2.0.2
                             <ResizeGrip Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="{Binding IsChecked, ElementName=ResizeLock, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{DynamicResource VisibleResizeGrip}" Cursor="{DynamicResource LoLNormal}"/>
                             <!--Start of Tabs-->
                             <u:TabControlRadio Background="Transparent" BorderThickness="0" x:Name="RadioTabs" Grid.Row="1">
                                 <!-- Main Tab -->
+<<<<<<< HEAD
                                 <TabItem x:Name="MainTab" Header="主页" Style="{DynamicResource Tabstyle}">
+=======
+                                <TabItem x:Name="MainTab" Header="{DynamicResource MainWindow_Main}" Style="{DynamicResource Tabstyle}">
+>>>>>>> 2.0.2
                                     <WrapPanel>
                                         <local:OptionalRadioButton x:Name="BFS"  GroupName="Toggle" Width="Auto" Height="Auto" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" IsChecked="{Binding ElementName=RadioTabs, Path=RadioGroup, Converter={StaticResource RadioConverter}, ConverterParameter=Items}" MouseLeftButtonDown="MainWindow_MouseLeftButtonDown" MouseLeftButtonUp="MainWindow_MouseLeftButtonUp">
                                             <local:OptionalRadioButton.Content>
@@ -208,6 +257,13 @@
                                                 </Border>
                                             </Border>
                                         </local:OptionalRadioButton>
+                                        <!--<local:OptionalRadioButton x:Name="PlayerDmg" GroupName="Toggle" Width="Auto" Height="Auto" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" IsChecked="{Binding ElementName=RadioTabs, Path=RadioGroup, Converter={StaticResource RadioConverter}, ConverterParameter=Chart}">
+                                            <Border Width="Auto" Height="Auto" Padding="0 0 0 0" Margin="0 0 0 0" BorderBrush="Transparent" CornerRadius="20 20 20 20" BorderThickness="0" Background="Transparent">
+                                                <Border>
+                                                    <Image Source="Images\cstyle\Damage.png" Height="44" Width="44"/>
+                                                </Border>
+                                            </Border>
+                                        </local:OptionalRadioButton>-->
                                         <local:OptionalRadioButton x:Name="Origins" GroupName="Toggle" Width="Auto" Height="Auto" Grid.Column="10" Background="Transparent" BorderBrush="Transparent" IsChecked="{Binding ElementName=RadioTabs, Path=RadioGroup, Converter={StaticResource RadioConverter}, ConverterParameter=Origins}">
                                             <Border Width="Auto" Height="Auto" Padding="0 0 0 0" Margin="0 0 0 0" BorderBrush="Transparent" CornerRadius="20 20 20 20" BorderThickness="0" Background="Transparent">
                                                 <Border>
@@ -225,7 +281,11 @@
                                     </WrapPanel>
                                 </TabItem>
                                 <!--Items Builder-->
+<<<<<<< HEAD
                                 <TabItem x:Name="ItemsBuild" Header="自由组合" Style="{DynamicResource Tabstyle}" IsSelected="{Binding ElementName=RadioTabs, Path=RadioGroup, Converter={StaticResource RadioConverter}, ConverterParameter=ItemBuilder}">
+=======
+                                <TabItem x:Name="ItemsBuild" Header="{DynamicResource MainWindow_ItemBuilder}" Style="{DynamicResource Tabstyle}" IsSelected="{Binding ElementName=RadioTabs, Path=RadioGroup, Converter={StaticResource RadioConverter}, ConverterParameter=ItemBuilder}">
+>>>>>>> 2.0.2
                                     <WrapPanel HorizontalAlignment="Center">
                                         <local:ItemsCounter x:Name="BFCounter" MaxValue="10" MinValue="0" />
                                         <local:ItemsCounter x:Name="RecurveBowCounter" MaxValue="10" MinValue="0" />
@@ -284,6 +344,10 @@
                     </DataTrigger>
                     <DataTrigger Binding="{Binding ElementName=Probability, Path=IsChecked}" Value="True">
                         <Setter TargetName="Frame" Property="ContentTemplate" Value="{StaticResource Probability}"/>
+                        <Setter TargetName="Modifier" Property="IsChecked" Value="True"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ElementName=PlayerDmg, Path=IsChecked}" Value="True">
+                        <Setter TargetName="Frame" Property="ContentTemplate" Value="{StaticResource Playerdamage}"/>
                         <Setter TargetName="Modifier" Property="IsChecked" Value="True"/>
                     </DataTrigger>
                     <DataTrigger Binding="{Binding ElementName=Origins, Path=IsChecked}" Value="True">
@@ -360,6 +424,13 @@
                             <Condition Binding="{Binding ElementName=Probability, Path=IsMouseOver}" Value="True" />
                         </MultiDataTrigger.Conditions>
                         <Setter TargetName="Frame" Property="ContentTemplate" Value="{StaticResource Probability}"/>
+                    </MultiDataTrigger>
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding ElementName=Modifier, Path=IsChecked}" Value="False" />
+                            <Condition Binding="{Binding ElementName=PlayerDmg, Path=IsMouseOver}" Value="True" />
+                        </MultiDataTrigger.Conditions>
+                        <Setter TargetName="Frame" Property="ContentTemplate" Value="{StaticResource Playerdamage}"/>
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
@@ -446,6 +517,13 @@
                             <Condition Binding="{Binding ElementName=Probability, Path=IsMouseOver}" Value="True" />
                         </MultiDataTrigger.Conditions>
                         <Setter TargetName="Frame2" Property="ContentTemplate" Value="{StaticResource Probability}"/>
+                    </MultiDataTrigger>
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding ElementName=Modifier, Path=IsChecked}" Value="True" />
+                            <Condition Binding="{Binding ElementName=PlayerDmg, Path=IsMouseOver}" Value="True" />
+                        </MultiDataTrigger.Conditions>
+                        <Setter TargetName="Frame2" Property="ContentTemplate" Value="{StaticResource Playerdamage}"/>
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>

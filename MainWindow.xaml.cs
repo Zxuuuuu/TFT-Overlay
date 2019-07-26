@@ -21,6 +21,10 @@ namespace TFT_Overlay
         [System.Runtime.InteropServices.DllImport("user32.dll", EntryPoint = "SetForegroundWindow")]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
         public IntPtr myHandle;
+<<<<<<< HEAD
+=======
+        private System.Timers.Timer tTop;
+>>>>>>> 2.0.2
 
         private readonly Cursor LoLNormal = CustomCursor.FromByteArray(Properties.Resources.LoLNormal);
         private readonly Cursor LoLPointer = CustomCursor.FromByteArray(Properties.Resources.LoLPointer);
@@ -52,6 +56,17 @@ namespace TFT_Overlay
 
             LoadStringResource(Settings.Default.Language);
             this.Cursor = LoLNormal;
+
+            this.WindowState = System.Windows.WindowState.Normal;
+            this.ShowInTaskbar = false;
+            this.Topmost = OnTop;
+            myHandle = new System.Windows.Interop.WindowInteropHelper(this).Handle;
+            //...
+            tTop = new System.Timers.Timer(15000);//set Timer  
+            tTop.Elapsed += new System.Timers.ElapsedEventHandler(theout);
+            tTop.AutoReset = true;
+            tTop.Enabled = true;
+
             CanDrag = !Settings.Default.Lock;
 
             if (Settings.Default.AutoDim == true)
@@ -70,8 +85,11 @@ namespace TFT_Overlay
             tTop.Enabled = true;
         }
 
+<<<<<<< HEAD
         
 
+=======
+>>>>>>> 2.0.2
         public void theout(object source, System.Timers.ElapsedEventArgs e)
         {
             if (OnTop)
@@ -100,7 +118,10 @@ namespace TFT_Overlay
             }
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2.0.2
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             tTop.Stop();
@@ -131,7 +152,11 @@ namespace TFT_Overlay
         {
             string state = Settings.Default.AutoUpdate == true ? "OFF" : "ON";
 
+<<<<<<< HEAD
             MessageBoxResult result = MessageBox.Show($"你需要 { (state.Equals("ON") ? "开启":"关闭") } 自动更新吗？ 这么做需要重启程序。", "自动更新", MessageBoxButton.OKCancel);
+=======
+            MessageBoxResult result = MessageBox.Show($"你需要 { (state.Equals("ON") ? "开启" : "关闭") } 自动更新吗？ 这么做需要重启程序。", "自动更新", MessageBoxButton.OKCancel);
+>>>>>>> 2.0.2
 
             if (result != MessageBoxResult.OK)
             {
@@ -256,7 +281,7 @@ namespace TFT_Overlay
 
         private void Localization_Credits(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("de-DE: Revyn#0969\nes-AR: Oscarinom\nes-MX: Jukai#3434\nfr-FR: Darkneight\nit-IT: BlackTYWhite#0943\nJA: つかぽん＠PKMotion#8731\nPL: Czapson#9774\npt-BR: Bigg#4019\nRU: Jeremy Buttson#2586\nvi-VN: GodV759\nzh-CN: nevex#4441\nzh-TW: noheart#6977\n", "Localization Credits");
+            MessageBox.Show("de-DE: Revyn#0969\nes-AR: Oscarinom\nes-MX: Jukai#3434\nfr-FR: Darkneight\nHU: Edizone#6157\nit-IT: BlackTYWhite#0943\nJA: つかぽん＠PKMotion#8731\nPL: Czapson#9774\npt-BR: Bigg#4019\nRU: Jeremy Buttson#2586\nSL: Shokugeki#0012\nvi-VN: GodV759\nzh-CN: nevex#4441\nzh-TW: noheart#6977\n", "Localization Credits");
         }
 
         /// <summary>
