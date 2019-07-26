@@ -18,21 +18,21 @@ namespace TFT_Overlay
             {
                 try
                 {
-                    string htmlCode = client.DownloadString("https://raw.githubusercontent.com/Just2Good/TFT-Overlay/master/Utilities/Version.cs");
+                    string htmlCode = client.DownloadString("https://raw.githubusercontent.com/izoyo/TFT-Overlay/zh-CN/Utilities/Version.cs");
                     int versionFind = htmlCode.IndexOf("public static string version = ");
                     version = htmlCode.Substring(versionFind + 32, 5);
                     if (currentVersion != version && Settings.Default.AutoUpdate)
                     {
-                        var result = MessageBox.Show($"A new update is available.\nWould you like to download V{version}?", "TFT Overlay Update Available", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        var result = MessageBox.Show($"现在已经发布新的版本啦~\n你需要下载 V{version} 吗？", "TFT Overlay Update Available", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                         if (result == MessageBoxResult.Yes)
                         {
-                            string link = "https://github.com/Just2good/TFT-Overlay/releases/download/V" + version + "/TFT.Overlay.V" + version + ".zip";
+                            string link = "https://github.com/izoyo/TFT-Overlay/releases/download/V" + version + ".CN/V" + version + ".zip";
                             ServicePointManager.Expect100Continue = true;
                             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                             client.DownloadFile(new Uri(link), "TFTOverlay.zip");
 
-                            var res = MessageBox.Show("The zip file was downloaded to your local directory, please extract and use the updated version instead.\nDo you want to open your local directory?",
+                            var res = MessageBox.Show("zip文件已下载到您的本地目录，请解压并使用更新的版本。\n要打开本地目录吗？",
                                 "Success", MessageBoxButton.YesNo, MessageBoxImage.Information);
                             if (res == MessageBoxResult.Yes)
                             {
@@ -48,7 +48,7 @@ namespace TFT_Overlay
                 catch (WebException ex)
                 {
                     Console.WriteLine(ex);
-                    MessageBox.Show(ex.ToString(), "An error occured", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(ex.ToString(), "报错啦！", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
