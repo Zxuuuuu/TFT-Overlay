@@ -108,12 +108,12 @@ namespace TFT_Overlay
 
         private void MenuItem_Click_About(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("TFT Information Overlay V" + CurrentVersion + " by J2GKaze/Jinsoku#4019\n\nDM me on Discord if you have any questions\n\nLast Updated: July 24th, 2019 @ 4:25 PST", "About");
+            MessageBox.Show("TFT Information Overlay V" + CurrentVersion + " by J2GKaze/Jinsoku#4019\n汉化定制 by izoyo（悠扬）\n\nDM me on Discord if you have any questions\n\nLast Updated: July 10th, 2019 @ 7:45PM PST", "About");
         }
 
         private void MenuItem_Click_Credits(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Big thanks to:\nChaoticoz: Lock Window, Always on Top, and Mouseover\nAsemco/Asemco#7390: Adding Origins and Classes\nAthenyx#9406: Designs\nTenebris: Auto-Updater\nOBJECT#3031: Items/Origins/Classes Strings Base\nJpgdev: Readme format\nKbphan\nEerilai\nꙅꙅɘᴎTqAbɘbᴎɘld#1175: Window Position/Size Saving, CPU Threading Fix\nNarcolic#6374: Item Builder\nIzoyo: Fullscreen\n\nShoutout to:\nAlexander321#7153 for the Discord Nitro Gift!\nAnonymous for Reddit Gold\nu/test01011 for Reddit Gold\n\nmac#0001 & bNatural#0001(Feel free to bug these 2 on Discord) ;)\nShamish#4895 (Make sure you bug this guy a lot)\nDekinosai#7053 (Buy this man tons of drinks)", "Credits");
+            MessageBox.Show("Big thanks to:\nChaoticoz: Lock Window, Always on Top, and Mouseover\nAsemco/Asemco#7390: Adding Origins and Classes\nAthenyx#9406: Designs\nTenebris: Auto-Updater\nOBJECT#3031: Items/Origins/Classes Strings Base\nJpgdev: Readme format\nKbphan\nEerilai\nꙅꙅɘᴎTqAbɘbᴎɘld#1175: Window Position/Size Saving, CPU Threading Fix\nNarcolic#6374: Item Builder\n\nShoutout to:\nAlexander321#7153 for the Discord Nitro Gift!\nAnonymous for Reddit Gold\nu/test01011 for Reddit Gold\n\nmac#0001 & bNatural#0001(Feel free to bug these 2 on Discord) ;)\nShamish#4895 (Make sure you bug this guy a lot)\nDekinosai#7053 (Buy this man tons of drinks)", "Credits");
         }
 
         private void MenuItem_Click_Lock(object sender, RoutedEventArgs e)
@@ -125,7 +125,7 @@ namespace TFT_Overlay
         {
             string state = Settings.Default.AutoUpdate == true ? "OFF" : "ON";
 
-            MessageBoxResult result = MessageBox.Show($"Would you like to turn {state} Auto-Update? This will restart the program.", "Auto-Updater", MessageBoxButton.OKCancel);
+            MessageBoxResult result = MessageBox.Show($"你需要 { (state.Equals("ON") ? "开启" : "关闭") } 自动更新吗？ 这么做需要重启程序。", "自动更新", MessageBoxButton.OKCancel);
 
             if (result != MessageBoxResult.OK)
             {
@@ -137,6 +137,7 @@ namespace TFT_Overlay
             System.Windows.Forms.Application.Restart();
             Application.Current.Shutdown();
         }
+
 
         private void MenuItem_Click_OnTop(object sender, RoutedEventArgs e)
         {
@@ -180,7 +181,7 @@ namespace TFT_Overlay
         {
             string state = Settings.Default.AutoDim == true ? "OFF" : "ON";
 
-            MessageBoxResult result = MessageBox.Show($"Would you like to turn {state} Auto-Dim? This will restart the program.", "Auto-Dim", MessageBoxButton.OKCancel);
+            MessageBoxResult result = MessageBox.Show($"你需要 { (state.Equals("ON") ? "开启" : "关闭") } 自动隐藏吗？ 这么做需要重启程序。", "自动隐藏", MessageBoxButton.OKCancel);
 
             if (result != MessageBoxResult.OK)
             {
@@ -286,7 +287,7 @@ namespace TFT_Overlay
 
         private void OpenChangelog_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/Just2good/TFT-Overlay/blob/master/README.md#version-history");
+            System.Diagnostics.Process.Start("https://github.com/izoyo/TFT-Overlay/releases");
         }
 
         private void LocalizationHelp_Click(object sender, RoutedEventArgs e)
