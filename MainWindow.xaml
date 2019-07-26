@@ -214,13 +214,13 @@
                                                 </Border>
                                             </Border>
                                         </local:OptionalRadioButton>
-                                        <local:OptionalRadioButton x:Name="PlayerDmg" GroupName="Toggle" Width="Auto" Height="Auto" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" IsChecked="{Binding ElementName=RadioTabs, Path=RadioGroup, Converter={StaticResource RadioConverter}, ConverterParameter=Chart}">
+                                        <!--<local:OptionalRadioButton x:Name="PlayerDmg" GroupName="Toggle" Width="Auto" Height="Auto" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" IsChecked="{Binding ElementName=RadioTabs, Path=RadioGroup, Converter={StaticResource RadioConverter}, ConverterParameter=Chart}">
                                             <Border Width="Auto" Height="Auto" Padding="0 0 0 0" Margin="0 0 0 0" BorderBrush="Transparent" CornerRadius="20 20 20 20" BorderThickness="0" Background="Transparent">
                                                 <Border>
-                                                    <Image Source="Images\rounds/carousel.png" Height="44" Width="44"/>
+                                                    <Image Source="Images\cstyle\Damage.png" Height="44" Width="44"/>
                                                 </Border>
                                             </Border>
-                                        </local:OptionalRadioButton>
+                                        </local:OptionalRadioButton>-->
                                         <local:OptionalRadioButton x:Name="Origins" GroupName="Toggle" Width="Auto" Height="Auto" Grid.Column="10" Background="Transparent" BorderBrush="Transparent" IsChecked="{Binding ElementName=RadioTabs, Path=RadioGroup, Converter={StaticResource RadioConverter}, ConverterParameter=Origins}">
                                             <Border Width="Auto" Height="Auto" Padding="0 0 0 0" Margin="0 0 0 0" BorderBrush="Transparent" CornerRadius="20 20 20 20" BorderThickness="0" Background="Transparent">
                                                 <Border>
