@@ -22,6 +22,26 @@
   -  [Click Here for instructions](https://github.com/Just2good/TFT-Overlay/blob/master/Localization.md)
 
 ## Version History  
+- **7.24.2019**   
+  -[2.0.2](https://github.com/Just2good/TFT-Overlay/releases/tag/V2.0.2) 
+     - Fixed really dumb auto updater  
+
+  -[2.0.1](https://github.com/Just2good/TFT-Overlay/releases/tag/V2.0.1) 
+     - Fullscreen by Izoyo  
+     - Updated for 9.14B  
+     - IT & FR Updated  
+  
+- **7.23.2019**   
+  - [1.9.9](https://github.com/Just2good/TFT-Overlay/releases/tag/V1.9.9) 
+     - Added Player Damage Chart
+     - Updated Localizations
+
+- **7.18.2019**   
+  - [1.9.8](https://github.com/Just2good/TFT-Overlay/releases/tag/V1.9.8) 
+     - Added Twisted Fate
+     - Changed Elise from 2g to 1g
+     - Updated it-IT & Added HU  
+
 - **7.16.2019**   
   - [1.9.7](https://github.com/Just2good/TFT-Overlay/releases/tag/V1.9.7)  
      - Updated for 9.14 (ItemStrings and en-US only)
