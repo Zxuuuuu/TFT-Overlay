@@ -211,9 +211,9 @@
 
     <!-- Yordle -->
     <s:String x:Key="ClassOrigins_Yordle" xml:space="preserve">约德尔人</s:String>
-    <s:String x:Key="ClassOrigins_Yordle_Describe1" xml:space="preserve">对友方约德尔人仅限的攻击会有一定几率</s:String>
+    <s:String x:Key="ClassOrigins_Yordle_Describe1" xml:space="preserve">对友方约德尔人攻击会有一定几率</s:String>
     <s:String x:Key="ClassOrigins_Yordle_Describe2" xml:space="preserve">未命中</s:String>
-    <s:String x:Key="ClassOrigins_Yordle_Describe3" xml:space="preserve">(3)20%几率造成未命中  (6)50几率造成未命中</s:String>
+    <s:String x:Key="ClassOrigins_Yordle_Describe3" xml:space="preserve">(3)20%  (6)50%</s:String>
 
     <!--Classes | Effects and Champions-->
     <s:String x:Key="ClassOrigins_Classes" xml:space="preserve">职业 | 羁绊效果</s:String>
